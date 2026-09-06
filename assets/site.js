@@ -289,6 +289,7 @@ Object.assign(I18N, {
   'nav.home': { vi:'Trang chủ', en:'Home', ko:'홈', zh:'首页', ja:'ホーム' },
 
   /* ---------- Trang bảng giá ---------- */
+  'pricing.badge': { vi:'GreenGo · Đà Nẵng · 120 km mỗi lần sạc', en:'GreenGo · Da Nang · 120 km per charge', ko:'GreenGo · 다낭 · 1회 충전 120km', zh:'GreenGo · 岘港 · 单次充电 120 公里', ja:'GreenGo · ダナン · 1回の充電で120km' },
   'pricing.h1': { vi:'Chi Tiết Bảng Giá', en:'Full Price List', ko:'전체 요금 안내', zh:'详细价格表', ja:'料金表の詳細' },
   'pricing.lead': {
     vi:'Giá niêm yết rõ ràng, không phí ẩn, không phụ thu. Chọn gói vừa với chuyến đi của bạn.',
