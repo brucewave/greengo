@@ -18,8 +18,13 @@ Rồi mở http://127.0.0.1:4181/
 ## Cấu trúc
 
 ```
-index.html            Toàn bộ trang: HTML, CSS và JavaScript nằm trong cùng một file
+index.html            Trang chủ
+pricing.html          Bảng giá chi tiết, phần "đã bao gồm" và câu hỏi thường gặp
+procedure.html        Năm bước thuê xe và vài mẹo đi đường
+about.html            Giới thiệu GreenGo
 assets/
+  site.css            Toàn bộ CSS, dùng chung cho cả bốn trang
+  site.js             Toàn bộ JavaScript: đa ngôn ngữ, modal, chi nhánh, quy đổi USD
   brand/              Logo GreenGo và ảnh xe
     logo-badge.png        Huy hiệu tròn — dùng ở header, footer và favicon
     logo-horizontal.png   Logo ngang — dùng trong khối "Thủ Tục Thuê Xe"
@@ -31,7 +36,9 @@ assets/
 
 ## Những chỗ hay phải sửa
 
-Tất cả đều nằm trong thẻ `<script>` ở cuối `index.html`.
+Tất cả đều nằm trong `assets/site.js`, dùng chung cho cả bốn trang — sửa một lần là
+mọi trang cập nhật theo. Riêng phần khung (header, footer, modal) thì được lặp lại trong
+từng file HTML, nên nếu đổi cấu trúc khung thì nhớ sửa ở cả bốn file.
 
 **Thông tin liên hệ và chi nhánh** — mảng `BRANCHES`. Mỗi chi nhánh gồm số hotline,
 tên người phụ trách, địa chỉ, link Google Maps và link mạng xã hội. Thêm phần tử thứ
@@ -55,6 +62,9 @@ chọn chi nhánh, không cần sửa gì thêm.
 - Link Facebook, Zalo, WhatsApp, KakaoTalk, WeChat, Telegram và ảnh QR tương ứng
 
 ## Deploy
+
+Menu điều hướng: "Quãng Đường & Phạm Vi" cuộn tới mục trong trang chủ, ba mục còn lại
+dẫn sang trang riêng.
 
 Trang tĩnh thuần nên đẩy lên đâu cũng chạy, không cần cấu hình build. Với Vercel, chọn
 framework preset là **Other** và để trống ô build command lẫn output directory.
