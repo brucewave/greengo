@@ -1,0 +1,13 @@
+# File tạm khi kiểm thử bằng trình duyệt headless
+_test.html
+_a.html
+_artifact_test.html
+
+# Thư mục do công cụ sinh ra
+.vercel/
+node_modules/
+
+# Rác hệ điều hành
+Thumbs.db
+desktop.ini
+.DS_Store
