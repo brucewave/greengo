@@ -313,11 +313,11 @@ Object.assign(I18N, {
     ja:'ダナン電動バイクレンタル料金 | GreenGO'
   },
   'meta.desc.pricing': {
-    vi:'Giá thuê xe máy điện GreenGO tại Đà Nẵng: từ 110.000đ/ngày, thuê tháng còn 1.800.000đ. Không cọc, không bằng lái, đổi pin 2 phút ở trạm VinFast.',
-    en:'GreenGO electric scooter rental rates in Da Nang: from 110,000 VND a day, 1,800,000 VND a month. No deposit, no licence, two-minute swaps at VinFast stations.',
-    ko:'다낭 GreenGO 전기 스쿠터 대여 요금: 하루 110,000동부터, 월 1,800,000동. 보증금 없음, 면허 불필요, VinFast 스테이션에서 2분 교체.',
-    zh:'岘港 GreenGO 电动车租赁价格：每天 110.000 越南盾起，包月 1.800.000 越南盾。免押金、免驾照，VinFast 换电站 2 分钟换电。',
-    ja:'ダナンのGreenGO電動バイクレンタル料金：1日110,000ドンから、1ヶ月1,800,000ドン。保証金不要・免許不要、VinFastステーションで2分交換。'
+    vi:'Giá thuê xe máy điện GreenGO tại Đà Nẵng: từ 100.000đ/ngày, thuê tháng còn 1.800.000đ. Không cọc, không bằng lái, đổi pin 2 phút ở trạm VinFast.',
+    en:'GreenGO electric scooter rental rates in Da Nang: from 100,000 VND a day, 1,800,000 VND a month. No deposit, no licence, two-minute swaps at VinFast stations.',
+    ko:'다낭 GreenGO 전기 스쿠터 대여 요금: 하루 100,000동부터, 월 1,800,000동. 보증금 없음, 면허 불필요, VinFast 스테이션에서 2분 교체.',
+    zh:'岘港 GreenGO 电动车租赁价格：每天 100.000 越南盾起，包月 1.800.000 越南盾。免押金、免驾照，VinFast 换电站 2 分钟换电。',
+    ja:'ダナンのGreenGO電動バイクレンタル料金：1日100,000ドンから、1ヶ月1,800,000ドン。保証金不要・免許不要、VinFastステーションで2分交換。'
   },
   'meta.title.procedure': {
     vi:'Thủ Tục Thuê Xe Điện Đà Nẵng | GreenGO',
