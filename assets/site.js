@@ -20,8 +20,8 @@ const BRANCHES = [
     nameKey: 'branch.name',
     areaKey: 'branch.area',
     addressKey: 'branch.address',
-    hotline: ['0988.169.232', '0787.533.445'],
-    hotlineName: ['Ms Hạnh', 'Mr Huy'],
+    hotline: ['0787.533.445', '0988.169.232'],
+    hotlineName: ['Mr Huy', 'Ms Hạnh'],
     mapsUrl: MAPS_PLACE_URL,
     mapsEmbed: 'https://www.google.com/maps?q=16.0416078,108.2117355&z=17&hl=vi&output=embed',
     social: {
@@ -593,8 +593,6 @@ Object.assign(I18N, {
   'bike.s3.d': { vi:'Hơn 100 km mỗi lần đầy pin, thực tế 50–100 km tuỳ cách chạy', en:'Over 100 km on a full battery; 50–100 km in real use depending on how you ride', ko:'완충 시 100km 이상, 실제 주행은 방식에 따라 50~100km', zh:'满电 100 公里以上，实际约 50–100 公里，视骑法而定', ja:'満充電で100km以上、実走行は走り方により50〜100km' },
   'bike.s4.t': { vi:'Nhận kèm', en:'Comes with', ko:'함께 제공', zh:'随车附带', ja:'付属品' },
   'bike.s4.d': { vi:'Mũ bảo hiểm GreenGO, sạc dự phòng nếu cần, khoá xe', en:'A GreenGO helmet, a charger if you want one, and a lock', ko:'GreenGO 헬멧, 필요 시 충전기, 잠금장치', zh:'GreenGO 头盔、需要的话可配充电器、车锁', ja:'GreenGOヘルメット、ご希望に応じて充電器、ロック' },
-  'bike.helmet': { vi:'Mũ bảo hiểm GreenGO đi kèm mỗi xe', en:'A GreenGO helmet comes with every bike', ko:'모든 차량에 GreenGO 헬멧이 함께 제공됩니다', zh:'每辆车都配 GreenGO 头盔', ja:'全車にGreenGOヘルメットが付きます' },
-  'bike.shop':   { vi:'Cửa hàng GreenGO tại Đà Nẵng', en:'The GreenGO shop in Da Nang', ko:'다낭 GreenGO 매장', zh:'岘港 GreenGO 门店', ja:'ダナンのGreenGO店舗' },
 
   /* ---------- Thuê tháng ---------- */
   'month.h':    { vi:'Thuê Theo Tháng', en:'Renting by the Month', ko:'월 단위 대여', zh:'按月租车', ja:'月極レンタル' },
@@ -713,18 +711,25 @@ document.addEventListener('click', e => {
    Hiệu ứng hiện dần khi cuộn
    ============================================================ */
 const revealTargets = document.querySelectorAll('[data-reveal]');
-if ('IntersectionObserver' in window) {
+const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if ('IntersectionObserver' in window && !reduceMotion) {
   const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const el = entry.target;
-      const siblings = el.parentElement ? Array.from(el.parentElement.children).filter(c => c.hasAttribute('data-reveal')) : [];
+      /* Các phần tử cùng hàng thì hiện lần lượt, tạo cảm giác trôi vào */
+      const siblings = el.parentElement
+        ? Array.from(el.parentElement.children).filter(c => c.hasAttribute('data-reveal'))
+        : [];
       const idx = Math.max(0, siblings.indexOf(el));
-      el.style.transitionDelay = Math.min(idx, 5) * 70 + 'ms';
+      el.style.transitionDelay = Math.min(idx, 6) * 90 + 'ms';
       el.classList.add('is-in');
+      /* Xong hiệu ứng thì bỏ độ trễ, tránh ảnh hưởng các transition khác */
+      el.addEventListener('transitionend', () => { el.style.transitionDelay = ''; }, { once: true });
       io.unobserve(el);
     });
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.1 });
   revealTargets.forEach(el => io.observe(el));
 } else {
   revealTargets.forEach(el => el.classList.add('is-in'));

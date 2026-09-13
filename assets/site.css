@@ -73,12 +73,22 @@ p{margin:0}
 .section{padding:3.5rem 1rem}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* Scroll reveal */
-[data-reveal]{opacity:0;transform:translateY(12px);transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)}
-[data-reveal].is-in{opacity:1;transform:none}
+/* Hiệu ứng hiện dần khi cuộn tới — trôi lên + phóng nhẹ, easing kiểu expo-out */
+[data-reveal]{
+  opacity:0;
+  transform:translate3d(0,28px,0) scale(.985);
+  transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);
+  will-change:opacity,transform;
+}
+[data-reveal].is-in{opacity:1;transform:none;will-change:auto}
+/* Ảnh lớn thì trôi xa hơn một chút cho thấy rõ chuyển động */
+.bike-visual[data-reveal],
+.about-banner[data-reveal]{transform:translate3d(0,40px,0) scale(.97)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  [data-reveal]{opacity:1;transform:none;transition:none}
+  [data-reveal],
+  .bike-visual[data-reveal],
+  .about-banner[data-reveal]{opacity:1;transform:none;transition:none}
 }
 
 /* ============================================================
@@ -1166,11 +1176,6 @@ body.modal-open{overflow:hidden}
 .spec dt .material-symbols-rounded{color:var(--primary-600)}
 .spec dd{margin:0;font-size:.8125rem;line-height:1.6;color:var(--slate-600)}
 
-.bike-shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin-top:1.5rem}
-.bike-shots figure{margin:0;border-radius:var(--radius);overflow:hidden;background:#fff;outline:1px solid var(--slate-200)}
-.bike-shots img{width:100%;height:180px;object-fit:cover;object-position:center}
-.bike-shots figcaption{padding:.625rem .75rem;font-size:.75rem;line-height:1.5;color:var(--slate-500)}
-
 /* ============================================================
    Bốn bước đổi pin
    ============================================================ */
@@ -1264,12 +1269,10 @@ body.modal-open{overflow:hidden}
   .bike-split{grid-template-columns:1fr 1fr;gap:2rem}
   .bike-visual{padding:1.5rem}
   .bike-name{font-size:1.5rem}
-  .bike-shots img{height:220px}
   .swap-step{padding:1.25rem}
   .month-card{grid-template-columns:1.6fr 1fr;padding:2rem;align-items:center}
   .review-card{padding:2.5rem}
 }
 @media (max-width:560px){
   .swap-steps{grid-template-columns:1fr}
-  .bike-shots{grid-template-columns:1fr}
 }

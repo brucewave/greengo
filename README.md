@@ -29,9 +29,7 @@ assets/
     logo-badge.png        Huy hiệu tròn — dùng ở header, footer và favicon
     logo-horizontal.png   Logo ngang — dùng trong khối "Thủ Tục Thuê Xe"
     logo-stacked.png      Logo xếp dọc — hiện chưa dùng, để dự phòng
-    xe-may-dien.png       Ảnh xe ở khu vực hero và mục "Xe Bạn Sẽ Nhận"
-    non-bao-hiem.png      Mũ bảo hiểm GreenGO — mục "Xe Bạn Sẽ Nhận"
-    cua-hang.jpg          Mặt tiền cửa hàng — mục "Xe Bạn Sẽ Nhận"
+    xe-vinfast-evo.png    Ảnh xe — dùng ở hero và mục "Xe Bạn Sẽ Nhận"
     banner.jpg            Banner thương hiệu — đầu trang Giới Thiệu
   socials/            Icon Zalo, Messenger, WhatsApp, KakaoTalk, WeChat, Telegram
   vn/gb/kr/cn/jp.png  Cờ cho bộ chọn ngôn ngữ
@@ -65,8 +63,6 @@ kèm chữ "Đang cập nhật" thay vì thành link chết.
   vẫn đang để "Đà Nẵng — địa chỉ đang cập nhật")
 - Link Messenger, KakaoTalk, WeChat, Telegram và ảnh QR tương ứng. Zalo và WhatsApp đang
   suy ra từ hotline 0988.169.232, cần xác nhận lại
-- Ảnh chụp thật xe VinFast Evo Lite dán tem GreenGO (mục "Xe Bạn Sẽ Nhận" đang dùng ảnh
-  render trong bộ nhận diện)
 
 ## Deploy
 
