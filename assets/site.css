@@ -76,14 +76,14 @@ p{margin:0}
 /* Hiệu ứng hiện dần khi cuộn tới — trôi lên + phóng nhẹ, easing kiểu expo-out */
 [data-reveal]{
   opacity:0;
-  transform:translate3d(0,28px,0) scale(.985);
-  transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);
+  transform:translate3d(0,44px,0) scale(.978);
+  transition:opacity 1.15s cubic-bezier(.16,1,.3,1),transform 1.15s cubic-bezier(.16,1,.3,1);
   will-change:opacity,transform;
 }
 [data-reveal].is-in{opacity:1;transform:none;will-change:auto}
 /* Ảnh lớn thì trôi xa hơn một chút cho thấy rõ chuyển động */
 .bike-visual[data-reveal],
-.about-banner[data-reveal]{transform:translate3d(0,40px,0) scale(.97)}
+.about-banner[data-reveal]{transform:translate3d(0,64px,0) scale(.955)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   [data-reveal],

@@ -484,11 +484,11 @@ Object.assign(I18N, {
   },
   'pstep.2.t': { vi:'Xác Nhận Giấy Tờ', en:'Confirm Your Details', ko:'서류 확인', zh:'确认证件', ja:'書類の確認' },
   'pstep.2.d': {
-    vi:'Gửi ảnh chụp rõ CCCD, hộ chiếu hoặc giấy tờ tuỳ thân. Chúng tôi không giữ giấy tờ gốc của bạn — chỉ lưu bản ảnh để đối chiếu, và xoá sau khi bạn trả xe.',
-    en:'Send a clear photo of your ID card, passport or other identity document. We never hold your original papers — only the photo, for reference, and we delete it after you return the bike.',
-    ko:'신분증, 여권 등 신분 증명 서류의 선명한 사진을 보내 주세요. 원본 서류는 절대 보관하지 않습니다. 대조용 사진만 보관하며, 반납 후 삭제합니다.',
-    zh:'发一张清晰的身份证、护照或其他身份证件照片。我们绝不扣留您的原件，只保留照片用于核对，还车后即删除。',
-    ja:'身分証やパスポートなど、本人確認書類の鮮明な写真をお送りください。原本はお預かりしません。照合用の写真のみ保管し、返却後に削除します。'
+    vi:'Gửi ảnh chụp rõ CCCD, hộ chiếu, hoặc giấy tờ tuỳ thân để xác nhận.',
+    en:'Send a clear photo of your ID card, passport or other identity document for verification.',
+    ko:'확인을 위해 신분증, 여권 등 신분 증명 서류의 선명한 사진을 보내 주세요.',
+    zh:'请发一张清晰的身份证、护照或其他身份证件照片以便核对。',
+    ja:'確認のため、身分証やパスポートなど本人確認書類の鮮明な写真をお送りください。'
   },
   'pstep.3.t': { vi:'Nhận Xe Tận Nơi', en:'Take Delivery', ko:'현장에서 인수', zh:'收车', ja:'車両の受け取り' },
   'pstep.3.d': {
@@ -525,27 +525,27 @@ Object.assign(I18N, {
   /* ---------- Trang giới thiệu ---------- */
   'about.h1': { vi:'Về GreenGO', en:'About GreenGO', ko:'GreenGO 소개', zh:'关于 GreenGO', ja:'GreenGOについて' },
   'about.lead': {
-    vi:'Cho thuê xe máy điện tại Đà Nẵng — thủ tục nhẹ, giá rõ ràng, và một chiếc xe sẵn sàng đưa bạn đi.',
-    en:'Electric scooter rental in Da Nang — light on paperwork, clear on price, with a bike ready to take you out.',
-    ko:'다낭의 전기 스쿠터 렌탈 — 간단한 절차, 명확한 요금, 그리고 언제든 출발할 준비가 된 차량.',
-    zh:'岘港的电动摩托车租赁 — 手续简单，价格清楚，车随时能载您出发。',
-    ja:'ダナンの電動バイクレンタル — 手続きは簡単、料金は明快、いつでも出発できる一台とともに。'
+    vi:'Cho thuê xe máy điện tại Đà Nẵng — thủ tục đơn giản, giá rõ ràng, hỗ trợ 24/7.',
+    en:'Electric scooter rental in Da Nang — simple paperwork, clear pricing, support 24/7.',
+    ko:'다낭의 전기 스쿠터 렌탈 — 간단한 절차, 명확한 요금, 24시간 지원.',
+    zh:'岘港的电动摩托车租赁 — 手续简单，价格清楚，24 小时支持。',
+    ja:'ダナンの電動バイクレンタル — 手続きは簡単、料金は明快、24時間サポート。'
   },
   'about.who.t': { vi:'GreenGO Là Ai', en:'Who We Are', ko:'GreenGO는', zh:'我们是谁', ja:'GreenGOとは' },
   'about.who.d': {
-    vi:'GreenGO cho thuê xe máy điện tại Đà Nẵng: du khách ghé thành phố vài ngày, sinh viên đi học, người đi làm hằng ngày và cả khách thuê dài hạn theo tháng. Xe là VinFast Evo Lite bản Đổi Pin — đời mới, rộng và êm hơn bản cũ, chạy êm, không mùi xăng.',
-    en:'GreenGO rents electric scooters in Da Nang — to travellers here for a few days, to students riding to class, to people commuting daily, and to anyone renting by the month. The bike is the VinFast Evo Lite battery-swap edition: the newer model, roomier and smoother than the old one, quiet and with no smell of petrol.',
-    ko:'GreenGO는 다낭에서 전기 스쿠터를 대여합니다. 며칠 머무는 여행자, 통학하는 학생, 매일 출퇴근하는 분, 월 단위 장기 이용자까지 함께합니다. 차량은 VinFast Evo Lite 배터리 교체형으로, 구형보다 넓고 부드러운 최신 모델이며 조용하고 기름 냄새가 없습니다.',
-    zh:'GreenGO 在岘港做电动摩托车租赁：待几天的旅客、上学的学生、每天通勤的人，还有按月长租的客人。车是 VinFast Evo Lite 换电版，新款，比老款更宽敞更平顺，安静且没有汽油味。',
-    ja:'GreenGOはダナンで電動バイクをレンタルしています。数日滞在の旅行者、通学する学生、毎日通勤する方、月単位で長期利用する方まで。車両はVinFast Evo Liteバッテリー交換仕様。旧型より広く滑らかな新型で、静かでガソリンの匂いもありません。'
+    vi:'GreenGO cho thuê xe máy điện tại Đà Nẵng: du khách ghé thành phố vài ngày, sinh viên đi học, người đi làm hằng ngày và cả khách thuê dài hạn theo tháng. Xe là VinFast Evo Lite bản Đổi Pin — đời mới, rộng và êm hơn bản cũ, chạy êm, không mùi xăng. Chúng tôi <strong>sẵn sàng hỗ trợ 24/7</strong>.',
+    en:'GreenGO rents electric scooters in Da Nang — to travellers here for a few days, to students riding to class, to people commuting daily, and to anyone renting by the month. The bike is the VinFast Evo Lite battery-swap edition: the newer model, roomier and smoother than the old one, quiet and with no smell of petrol. We are <strong>ready to help 24/7</strong>.',
+    ko:'GreenGO는 다낭에서 전기 스쿠터를 대여합니다. 며칠 머무는 여행자, 통학하는 학생, 매일 출퇴근하는 분, 월 단위 장기 이용자까지 함께합니다. 차량은 VinFast Evo Lite 배터리 교체형으로, 구형보다 넓고 부드러운 최신 모델이며 조용하고 기름 냄새가 없습니다. 저희는 <strong>24시간 언제든 지원</strong>해 드립니다.',
+    zh:'GreenGO 在岘港做电动摩托车租赁：待几天的旅客、上学的学生、每天通勤的人，还有按月长租的客人。车是 VinFast Evo Lite 换电版，新款，比老款更宽敞更平顺，安静且没有汽油味。我们<strong>提供 24 小时支持</strong>。',
+    ja:'GreenGOはダナンで電動バイクをレンタルしています。数日滞在の旅行者、通学する学生、毎日通勤する方、月単位で長期利用する方まで。車両はVinFast Evo Liteバッテリー交換仕様。旧型より広く滑らかな新型で、静かでガソリンの匂いもありません。<strong>24時間いつでもサポート</strong>いたします。'
   },
   'about.why.t': { vi:'Cách Chúng Tôi Làm Việc', en:'How We Work', ko:'저희가 일하는 방식', zh:'我们怎么做事', ja:'私たちの進め方' },
   'about.why.d': {
-    vi:'Chúng tôi bỏ đi những thứ khiến việc thuê xe trở nên mệt: không đặt cọc, không giữ giấy tờ gốc, không yêu cầu bằng lái, không phí ẩn. Xe được giao tận nơi và hướng dẫn kỹ trước khi bạn chạy. Hết pin thì đổi ở trụ VinFast gần nhất, chúng tôi mở trụ từ xa cho bạn; hỏng xe giữa đường thì gọi, chúng tôi tới cứu hộ — cả hai việc này đều 24/7.',
-    en:'We removed the parts that make renting tiring: no deposit, no holding your original documents, no licence required, no hidden fees. We deliver the bike and walk you through it properly before you ride. Out of charge? Swap at the nearest VinFast station and we open it for you remotely. Broken down? Call and we come out — both, 24/7.',
-    ko:'대여를 번거롭게 만드는 것들을 없앴습니다. 보증금 없음, 원본 서류 보관 없음, 면허 요구 없음, 숨은 비용 없음. 차량은 원하는 곳으로 배달하고 출발 전 사용법을 꼼꼼히 안내합니다. 배터리가 떨어지면 가까운 VinFast 스테이션에서 교체하시면 되고, 저희가 원격으로 열어 드립니다. 고장이 나면 전화 주세요, 저희가 출동합니다. 두 가지 모두 24시간입니다.',
-    zh:'我们把让租车变麻烦的环节都去掉了：不收押金、不扣原件、不要驾照、没有隐藏费用。车送到您手上，出发前讲解清楚。没电就到最近的 VinFast 换电柜换，我们远程帮您开柜；路上抛锚就打电话，我们过去救援。两件事都是 24 小时。',
-    ja:'レンタルを面倒にする部分を取り除きました。保証金なし、原本の預かりなし、免許の確認なし、隠れた費用なし。車両はご指定の場所へお届けし、走り出す前に丁寧にご説明します。バッテリーが切れたら最寄りのVinFastステーションで交換、遠隔で開錠します。故障時はお電話いただければ救援に向かいます。どちらも24時間対応です。'
+    vi:'Chúng tôi bỏ đi những thứ khiến việc thuê xe trở nên mệt: không đặt cọc, không yêu cầu bằng lái, không phí ẩn. Xe được giao tận nơi và hướng dẫn kỹ trước khi bạn chạy. Hết pin thì đổi ở trụ VinFast gần nhất, chúng tôi mở trụ từ xa cho bạn; hỏng xe giữa đường thì gọi, chúng tôi tới cứu hộ — cả hai việc này đều 24/7.',
+    en:'We removed the parts that make renting tiring: no deposit, no licence required, no hidden fees. We deliver the bike and walk you through it properly before you ride. Out of charge? Swap at the nearest VinFast station and we open it for you remotely. Broken down? Call and we come out — both, 24/7.',
+    ko:'대여를 번거롭게 만드는 것들을 없앴습니다. 보증금 없음, 면허 요구 없음, 숨은 비용 없음. 차량은 원하는 곳으로 배달하고 출발 전 사용법을 꼼꼼히 안내합니다. 배터리가 떨어지면 가까운 VinFast 스테이션에서 교체하시면 되고, 저희가 원격으로 열어 드립니다. 고장이 나면 전화 주세요, 저희가 출동합니다. 두 가지 모두 24시간입니다.',
+    zh:'我们把让租车变麻烦的环节都去掉了：不收押金、不要驾照、没有隐藏费用。车送到您手上，出发前讲解清楚。没电就到最近的 VinFast 换电柜换，我们远程帮您开柜；路上抛锚就打电话，我们过去救援。两件事都是 24 小时。',
+    ja:'レンタルを面倒にする部分を取り除きました。保証金なし、免許の確認なし、隠れた費用なし。車両はご指定の場所へお届けし、走り出す前に丁寧にご説明します。バッテリーが切れたら最寄りのVinFastステーションで交換、遠隔で開錠します。故障時はお電話いただければ救援に向かいます。どちらも24時間対応です。'
   },
   'about.mission.t': { vi:'Điều Chúng Tôi Muốn', en:'What We Are After', ko:'저희가 바라는 것', zh:'我们想做到的', ja:'目指していること' },
   'about.mission.d': {
@@ -662,6 +662,9 @@ function setLang(code) {
   if (desc) desc.setAttribute('content', I18N['meta.desc.' + page] ? t('meta.desc.' + page) : t('meta.desc'));
 
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+  /* Vài câu cần in đậm một cụm, nên chèn thẳng HTML — chuỗi do mình viết trong I18N,
+     không có dữ liệu người dùng, nên dùng innerHTML ở đây là an toàn. */
+  document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
   document.querySelectorAll('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
 
   document.querySelectorAll('[data-lang-label]').forEach(el => { el.textContent = meta.label; });
@@ -723,13 +726,13 @@ if ('IntersectionObserver' in window && !reduceMotion) {
         ? Array.from(el.parentElement.children).filter(c => c.hasAttribute('data-reveal'))
         : [];
       const idx = Math.max(0, siblings.indexOf(el));
-      el.style.transitionDelay = Math.min(idx, 6) * 90 + 'ms';
+      el.style.transitionDelay = Math.min(idx, 6) * 140 + 'ms';
       el.classList.add('is-in');
       /* Xong hiệu ứng thì bỏ độ trễ, tránh ảnh hưởng các transition khác */
       el.addEventListener('transitionend', () => { el.style.transitionDelay = ''; }, { once: true });
       io.unobserve(el);
     });
-  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.1 });
+  }, { rootMargin: '0px 0px -16% 0px', threshold: 0.05 });
   revealTargets.forEach(el => io.observe(el));
 } else {
   revealTargets.forEach(el => el.classList.add('is-in'));
