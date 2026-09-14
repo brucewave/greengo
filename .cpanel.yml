@@ -1,0 +1,17 @@
+---
+# Cấu hình triển khai cho cPanel Git Version Control.
+# Bấm "Deploy HEAD Commit" trong cPanel sẽ chạy lần lượt các lệnh dưới đây,
+# chép mã nguồn từ /home/greengoi/repositories/greengo sang thư mục web.
+#
+# Nếu website chạy trên addon domain hoặc subdomain thì sửa DEPLOYPATH
+# thành đúng document root của domain đó, ví dụ:
+#   /home/greengoi/public_html/greengo
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/greengoi/public_html
+    - /bin/mkdir -p $DEPLOYPATH/assets
+    - /bin/cp -f index.html $DEPLOYPATH/
+    - /bin/cp -f about.html $DEPLOYPATH/
+    - /bin/cp -f pricing.html $DEPLOYPATH/
+    - /bin/cp -f procedure.html $DEPLOYPATH/
+    - /bin/cp -Rf assets/. $DEPLOYPATH/assets/
