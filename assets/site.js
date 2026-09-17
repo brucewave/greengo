@@ -35,15 +35,14 @@ const BRANCHES = [
     /* Kênh có ảnh QR thì ô đó mở lớp xem mã để khách quét bằng điện thoại.
        Kênh nào có cả QR lẫn link thì lớp xem mã có thêm nút "Mở app". */
     qr: {
-      whatsapp: 'assets/socials/qr-whatsapp.png',
-      telegram: 'assets/socials/qr-telegram.png'
-      // TODO: có ảnh QR KakaoTalk và WeChat thì thêm vào đây
+      whatsapp:  'assets/socials/qr-whatsapp.png',
+      telegram:  'assets/socials/qr-telegram.png',
+      kakaotalk: 'assets/socials/qr-kakaotalk.png'
+      // TODO: tạo xong WeChat thì thêm ảnh QR vào đây
     },
-    /* Kênh không có link lẫn QR thì hiện số để khách tự thêm bạn trong app,
-       bấm vào ô là chép số. Kênh nào không có cả ba thì ẩn hẳn. */
-    socialId: {
-      kakaotalk: '0787533445'
-    }
+    /* Kênh không có link lẫn QR thì hiện số ở đây để khách tự thêm bạn trong
+       app, bấm vào ô là chép số. Kênh nào không có cả ba thì ẩn hẳn. */
+    socialId: {}
   }
 ];
 
@@ -136,20 +135,35 @@ function selectBranch(id) {
   document.querySelectorAll('[data-maps-link]').forEach(el => { el.setAttribute('href', branch.mapsUrl); });
   document.querySelectorAll('[data-maps-review]').forEach(el => { el.setAttribute('href', MAPS_REVIEW_URL); });
 
-  /* Kênh có link thì mở link; kênh chỉ có số (KakaoTalk) thì hiện số,
-     bấm vào là chép; kênh chưa mở thì ẩn hẳn khỏi lưới. */
+  /* Kênh có mã QR thì mở lớp xem mã (giống trong modal Đặt Xe); có link thì
+     mở link; chỉ có số thì hiện số và bấm để chép; không có gì thì ẩn hẳn. */
   document.querySelectorAll('[data-social]').forEach(el => {
     const key  = el.dataset.social;
     const link = (branch.social || {})[key];
+    const qr   = (branch.qr || {})[key];
     const id   = (branch.socialId || {})[key];
     const note = el.querySelector('.sb');
     const hasLink = Boolean(link) && link !== '#';
 
-    el.hidden = !hasLink && !id;
+    el.hidden = !hasLink && !qr && !id;
     el.classList.remove('is-off');
     el.onclick = null;
+    el.onkeydown = null;
+    el.removeAttribute('role');
+    el.removeAttribute('tabindex');
 
-    if (hasLink) {
+    if (qr) {
+      el.setAttribute('href', '#');
+      el.removeAttribute('target');
+      el.removeAttribute('aria-disabled');
+      if (note) note.textContent = t('chan.qr');
+      const name = el.getAttribute('aria-label') || key;
+      el.onclick = e => {
+        e.preventDefault();
+        openBooking();
+        openQr(name, qr, hasLink ? link : '');
+      };
+    } else if (hasLink) {
       el.setAttribute('href', link);
       el.setAttribute('target', '_blank');
       el.setAttribute('rel', 'noopener noreferrer');
