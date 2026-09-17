@@ -25,15 +25,20 @@ const BRANCHES = [
     mapsUrl: MAPS_PLACE_URL,
     mapsEmbed: 'https://www.google.com/maps?q=16.0416078,108.2117355&z=17&hl=vi&output=embed',
     social: {
-      zalo:      'https://zalo.me/0988169232',
-      whatsapp:  'https://wa.me/84988169232',
-      facebook:  '',   // TODO: dán link Fanpage / m.me của GreenGO
-      kakaotalk: '',   // TODO: dán link open.kakao.com hoặc ảnh QR
-      wechat:    '',   // TODO: dán ảnh QR WeChat (đặt trong qr: {...})
-      telegram:  ''    // TODO: dán link t.me/<username>
+      zalo:      'https://zalo.me/0787533445',
+      whatsapp:  'https://wa.me/84787533445',
+      facebook:  'https://www.facebook.com/greengoebike',
+      telegram:  'https://t.me/+84788609393',
+      kakaotalk: '',   // Kakao không có link web mở chat, dùng số ở socialId
+      wechat:    ''    // TODO: tạo xong WeChat thì dán ảnh QR vào qr: {...}
+    },
+    /* Kênh không có link web thì hiện số để khách tự thêm bạn trong app,
+       bấm vào ô là chép số. Kênh nào không có cả link, QR lẫn số thì ẩn hẳn. */
+    socialId: {
+      kakaotalk: '0787533445'
     }
     /* Muốn hiện mã QR thay vì link, thêm:
-       qr: { wechat: 'assets/socials/qr-wechat.png', kakaotalk: '...' } */
+       qr: { wechat: 'assets/socials/qr-wechat.png' } */
   }
 ];
 
@@ -68,6 +73,42 @@ function buildBranchMenus() {
   });
 }
 
+/* Chép một đoạn chữ vào clipboard, có đường lui cho trình duyệt cũ */
+function copyText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text).catch(() => {});
+  }
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.cssText = 'position:fixed;top:-9999px;opacity:0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch (e) {}
+  document.body.removeChild(ta);
+  return Promise.resolve();
+}
+
+/* Kênh chỉ có số/ID (KakaoTalk, WeChat…): hiện số dưới icon, bấm vào là chép.
+   Gán bằng onclick để gọi lại nhiều lần cũng không chồng handler. */
+function wireCopyId(el, note, id) {
+  el.setAttribute('role', 'button');
+  el.setAttribute('tabindex', '0');
+  el.setAttribute('title', t('chan.copy'));
+  if (note) note.textContent = id;
+  const run = e => {
+    e.preventDefault();
+    copyText(id).then(() => {
+      if (!note) return;
+      note.textContent = t('chan.copied');
+      clearTimeout(el._copyTimer);
+      el._copyTimer = setTimeout(() => { note.textContent = id; }, 1600);
+    });
+  };
+  el.onclick = run;
+  el.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') run(e); };
+}
+
 /* Đổi chi nhánh → cập nhật hotline, địa chỉ, bản đồ, mạng xã hội */
 function selectBranch(id) {
   const branch = BRANCHES.find(b => b.id === id);
@@ -90,14 +131,20 @@ function selectBranch(id) {
   document.querySelectorAll('[data-maps-link]').forEach(el => { el.setAttribute('href', branch.mapsUrl); });
   document.querySelectorAll('[data-maps-review]').forEach(el => { el.setAttribute('href', MAPS_REVIEW_URL); });
 
-  /* Kênh chưa có link thật thì khoá lại + ghi "Đang cập nhật",
-     thay vì để href="#" bấm vào không đi đâu cả. */
+  /* Kênh có link thì mở link; kênh chỉ có số (KakaoTalk) thì hiện số,
+     bấm vào là chép; kênh chưa mở thì ẩn hẳn khỏi lưới. */
   document.querySelectorAll('[data-social]').forEach(el => {
-    const link = branch.social[el.dataset.social];
-    const usable = Boolean(link) && link !== '#';
-    el.classList.toggle('is-off', !usable);
+    const key  = el.dataset.social;
+    const link = (branch.social || {})[key];
+    const id   = (branch.socialId || {})[key];
     const note = el.querySelector('.sb');
-    if (usable) {
+    const hasLink = Boolean(link) && link !== '#';
+
+    el.hidden = !hasLink && !id;
+    el.classList.remove('is-off');
+    el.onclick = null;
+
+    if (hasLink) {
       el.setAttribute('href', link);
       el.setAttribute('target', '_blank');
       el.setAttribute('rel', 'noopener noreferrer');
@@ -106,8 +153,9 @@ function selectBranch(id) {
     } else {
       el.removeAttribute('href');
       el.removeAttribute('target');
-      el.setAttribute('aria-disabled', 'true');
-      if (note) note.textContent = t('chan.soon');
+      el.removeAttribute('aria-disabled');
+      if (id) wireCopyId(el, note, id);
+      else if (note) note.textContent = '';
     }
   });
   const map = document.querySelector('[data-map]');
@@ -290,6 +338,8 @@ const I18N = {
   'chan.msg':        { vi:'Nhắn tin', en:'Send a message', ko:'메시지 보내기', zh:'发送消息', ja:'メッセージを送る' },
   'chan.fanpage':    { vi:'Fanpage chính thức', en:'Official page', ko:'공식 페이지', zh:'官方主页', ja:'公式ページ' },
   'chan.soon':       { vi:'Đang cập nhật', en:'Coming soon', ko:'준비 중', zh:'即将开放', ja:'準備中' },
+  'chan.copy':       { vi:'Bấm để chép số, rồi thêm bạn trong app', en:'Tap to copy the number, then add us in the app', ko:'번호를 복사한 뒤 앱에서 친구 추가하세요', zh:'点击复制号码，再到 App 里添加好友', ja:'番号をコピーして、アプリで友だち追加してください' },
+  'chan.copied':     { vi:'Đã chép số', en:'Number copied', ko:'번호가 복사되었습니다', zh:'号码已复制', ja:'番号をコピーしました' },
   'aria.close':      { vi:'Đóng', en:'Close', ko:'닫기', zh:'关闭', ja:'閉じる' },
 
   'aria.lang': { vi:'Chọn ngôn ngữ', en:'Select language', ko:'언어 선택', zh:'选择语言', ja:'言語を選択' },
@@ -767,28 +817,35 @@ function renderChannels() {
   CHANNELS.forEach(chan => {
     const qr   = (branch.qr || {})[chan.key];
     const link = (branch.social || {})[chan.key];
+    const id   = (branch.socialId || {})[chan.key];
     const hasLink = Boolean(link) && link !== '#';
-    const usable = Boolean(qr) || hasLink;
 
-    const el = document.createElement(usable ? 'a' : 'div');
-    el.className = 'chan' + (usable ? '' : ' is-off');
+    /* Chưa có link, QR lẫn số thì bỏ hẳn ô đó đi cho lưới gọn */
+    if (!qr && !hasLink && !id) return;
+
+    const el = document.createElement('a');
+    el.className = 'chan';
+
+    const box  = document.createElement('span'); box.className = 'bx';
+    const img  = document.createElement('img'); img.src = chan.icon; img.alt = ''; img.loading = 'lazy';
+    const name = document.createElement('span'); name.className = 'nm'; name.textContent = chan.name;
+    const note = document.createElement('span'); note.className = 'sb';
+    box.appendChild(img);
+    el.append(box, name, note);
 
     if (qr) {
       el.href = '#';
+      note.textContent = t('chan.qr');
       el.addEventListener('click', e => { e.preventDefault(); openQr(chan.name, qr); });
     } else if (hasLink) {
       el.href = link;
       el.target = '_blank';
       el.rel = 'noopener noreferrer';
+      note.textContent = t(chan.labelKey || 'chan.msg');
+    } else {
+      wireCopyId(el, note, id);
     }
 
-    const sub = qr ? t('chan.qr') : (hasLink ? t(chan.labelKey || 'chan.msg') : t('chan.soon'));
-    const box  = document.createElement('span'); box.className = 'bx';
-    const img  = document.createElement('img'); img.src = chan.icon; img.alt = ''; img.loading = 'lazy';
-    const name = document.createElement('span'); name.className = 'nm'; name.textContent = chan.name;
-    const note = document.createElement('span'); note.className = 'sb'; note.textContent = sub;
-    box.appendChild(img);
-    el.append(box, name, note);
     grid.appendChild(el);
   });
 }
@@ -826,7 +883,7 @@ bookingModal.addEventListener('click', e => { if (e.target === bookingModal) clo
 /* Giữ tiêu điểm bàn phím bên trong modal */
 bookingModal.addEventListener('keydown', e => {
   if (e.key !== 'Tab') return;
-  const items = bookingModal.querySelectorAll('a[href], button:not([disabled])');
+  const items = bookingModal.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]');
   const visible = Array.from(items).filter(el => el.offsetParent !== null);
   if (!visible.length) return;
   const first = visible[0], last = visible[visible.length - 1];

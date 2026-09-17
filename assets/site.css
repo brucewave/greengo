@@ -1134,6 +1134,11 @@ body.modal-open{overflow:hidden}
 .social .sb:empty{display:none}
 .social.is-off{opacity:.5;cursor:default;pointer-events:none}
 .social.is-off:hover{background:#fff;outline-color:rgba(226,232,240,.8)}
+/* Kênh chưa mở thì ẩn hẳn khỏi lưới, không để lại ô trống */
+.social[hidden],.chan[hidden]{display:none}
+/* Kênh chỉ có số để chép: số hiện rõ hơn dòng phụ thường, con trỏ báo bấm được */
+.social[role="button"],.chan[role="button"]{cursor:pointer}
+.social[role="button"] .sb,.chan[role="button"] .sb{color:var(--slate-600);font-weight:600}
 
 /* ============================================================
    Giá cũ bị gạch (gói tháng đang khuyến mãi)
