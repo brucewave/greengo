@@ -832,6 +832,19 @@ body.modal-open{overflow:hidden}
 .qr-view.open{display:flex}
 .qr-view img{width:min(260px,70vw);height:auto;border-radius:var(--radius-lg);background:#fff;padding:.75rem;box-shadow:var(--shadow-lg)}
 .qr-view .qr-name{font-family:var(--font-display);font-size:1.125rem;font-weight:700;color:var(--slate-950)}
+.qr-view .qr-hint{
+  max-width:19rem;margin-top:-.375rem;text-align:center;
+  font-size:.8125rem;line-height:1.45;color:var(--slate-500);
+}
+/* Khách đang xem bằng điện thoại thì không tự quét màn hình mình được,
+   nên kênh nào có link vẫn cho mở thẳng app. */
+.qr-view .qr-open{
+  display:inline-flex;align-items:center;gap:.375rem;min-height:44px;padding:.5rem 1.25rem;
+  border-radius:999px;background:var(--accent-500);box-shadow:var(--shadow-sm);
+  font-family:var(--font-display);font-size:.875rem;font-weight:700;color:var(--on-accent);
+}
+.qr-view .qr-open:hover{background:var(--accent-600)}
+.qr-view .qr-open[hidden]{display:none}
 .qr-view .qr-back{
   display:inline-flex;align-items:center;gap:.375rem;min-height:44px;padding:.5rem 1.25rem;
   border-radius:999px;background:#fff;box-shadow:var(--shadow-sm);

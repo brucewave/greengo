@@ -28,17 +28,22 @@ const BRANCHES = [
       zalo:      'https://zalo.me/0787533445',
       whatsapp:  'https://wa.me/84787533445',
       facebook:  'https://www.facebook.com/greengoebike',
-      telegram:  'https://t.me/+84788609393',
+      telegram:  'https://t.me/greengodanang',
       kakaotalk: '',   // Kakao không có link web mở chat, dùng số ở socialId
       wechat:    ''    // TODO: tạo xong WeChat thì dán ảnh QR vào qr: {...}
     },
-    /* Kênh không có link web thì hiện số để khách tự thêm bạn trong app,
-       bấm vào ô là chép số. Kênh nào không có cả link, QR lẫn số thì ẩn hẳn. */
+    /* Kênh có ảnh QR thì ô đó mở lớp xem mã để khách quét bằng điện thoại.
+       Kênh nào có cả QR lẫn link thì lớp xem mã có thêm nút "Mở app". */
+    qr: {
+      whatsapp: 'assets/socials/qr-whatsapp.png',
+      telegram: 'assets/socials/qr-telegram.png'
+      // TODO: có ảnh QR KakaoTalk và WeChat thì thêm vào đây
+    },
+    /* Kênh không có link lẫn QR thì hiện số để khách tự thêm bạn trong app,
+       bấm vào ô là chép số. Kênh nào không có cả ba thì ẩn hẳn. */
     socialId: {
       kakaotalk: '0787533445'
     }
-    /* Muốn hiện mã QR thay vì link, thêm:
-       qr: { wechat: 'assets/socials/qr-wechat.png' } */
   }
 ];
 
@@ -334,6 +339,8 @@ const I18N = {
   'modal.answerNow': { vi:'Có người nghe máy ngay', en:'Someone picks up right away', ko:'바로 연결됩니다', zh:'马上有人接听', ja:'すぐにつながります' },
   'modal.orMessage': { vi:'Hoặc nhắn tin qua', en:'Or message us on', ko:'다른 채널로 메시지', zh:'或通过以下方式留言', ja:'メッセージで問い合わせ' },
   'modal.back':      { vi:'Quay lại', en:'Back', ko:'뒤로', zh:'返回', ja:'戻る' },
+  'modal.qrhint':    { vi:'Mở app trên điện thoại và quét mã để nhắn tin ngay.', en:'Open the app on your phone and scan the code to start chatting.', ko:'휴대폰에서 앱을 열고 코드를 스캔하면 바로 대화할 수 있습니다.', zh:'在手机上打开 App 扫描二维码，即可开始聊天。', ja:'スマホでアプリを開き、コードを読み取るとすぐにチャットできます。' },
+  'modal.openapp':   { vi:'Mở app', en:'Open app', ko:'앱 열기', zh:'打开 App', ja:'アプリを開く' },
   'chan.qr':         { vi:'Quét mã QR', en:'Scan QR code', ko:'QR 코드 스캔', zh:'扫描二维码', ja:'QRコードを読み取る' },
   'chan.msg':        { vi:'Nhắn tin', en:'Send a message', ko:'메시지 보내기', zh:'发送消息', ja:'メッセージを送る' },
   'chan.fanpage':    { vi:'Fanpage chính thức', en:'Official page', ko:'공식 페이지', zh:'官方主页', ja:'公式ページ' },
@@ -836,7 +843,7 @@ function renderChannels() {
     if (qr) {
       el.href = '#';
       note.textContent = t('chan.qr');
-      el.addEventListener('click', e => { e.preventDefault(); openQr(chan.name, qr); });
+      el.addEventListener('click', e => { e.preventDefault(); openQr(chan.name, qr, hasLink ? link : ''); });
     } else if (hasLink) {
       el.href = link;
       el.target = '_blank';
@@ -850,10 +857,17 @@ function renderChannels() {
   });
 }
 
-function openQr(name, src) {
+/* Lớp xem mã QR. Có link kèm theo thì hiện thêm nút "Mở app" — khách đang
+   xem bằng điện thoại không tự quét màn hình của mình được. */
+function openQr(name, src, link) {
   qrImage.src = src;
   qrImage.alt = name;
   qrName.textContent = name;
+  const open = document.getElementById('qrOpen');
+  if (open) {
+    open.hidden = !link;
+    if (link) open.href = link;
+  }
   qrView.classList.add('open');
 }
 function closeQr() { qrView.classList.remove('open'); qrImage.src = ''; }
