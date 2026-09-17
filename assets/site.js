@@ -526,11 +526,11 @@ Object.assign(I18N, {
   },
   'pstep.1.t': { vi:'Liên Hệ & Đặt Xe', en:'Get in Touch', ko:'문의 및 예약', zh:'联系并预订', ja:'問い合わせ・予約' },
   'pstep.1.d': {
-    vi:'Gọi hotline hoặc nhắn qua Messenger, Zalo, WhatsApp, KakaoTalk, WeChat, Telegram. Cho chúng tôi biết ngày thuê và nơi bạn muốn nhận xe. Chúng tôi trả lời được bằng tiếng Việt, Anh, Hàn, Trung và Nhật.',
-    en:'Call a hotline or message us on Messenger, Zalo, WhatsApp, KakaoTalk, WeChat or Telegram. Tell us your dates and where you would like the bike. We reply in Vietnamese, English, Korean, Chinese and Japanese.',
-    ko:'핫라인으로 전화하시거나 Messenger, Zalo, WhatsApp, KakaoTalk, WeChat, Telegram으로 메시지를 보내세요. 대여 날짜와 차량을 받을 장소를 알려 주시면 됩니다. 베트남어, 영어, 한국어, 중국어, 일본어로 응대합니다.',
-    zh:'打热线，或用 Messenger、Zalo、WhatsApp、KakaoTalk、WeChat、Telegram 给我们留言。告诉我们租车日期和取车地点。我们能用越南语、英语、韩语、中文和日语回复。',
-    ja:'ホットラインにお電話、またはMessenger・Zalo・WhatsApp・KakaoTalk・WeChat・Telegramでご連絡ください。ご希望の日程と受け取り場所をお知らせください。ベトナム語・英語・韓国語・中国語・日本語で対応します。'
+    vi:'Gọi hotline hoặc nhắn qua Messenger, Zalo, WhatsApp, KakaoTalk, Telegram. Cho chúng tôi biết ngày thuê và nơi bạn muốn nhận xe. Chúng tôi trả lời được bằng tiếng Việt, Anh, Hàn, Trung và Nhật.',
+    en:'Call a hotline or message us on Messenger, Zalo, WhatsApp, KakaoTalk or Telegram. Tell us your dates and where you would like the bike. We reply in Vietnamese, English, Korean, Chinese and Japanese.',
+    ko:'핫라인으로 전화하시거나 Messenger, Zalo, WhatsApp, KakaoTalk, Telegram으로 메시지를 보내세요. 대여 날짜와 차량을 받을 장소를 알려 주시면 됩니다. 베트남어, 영어, 한국어, 중국어, 일본어로 응대합니다.',
+    zh:'打热线，或用 Messenger、Zalo、WhatsApp、KakaoTalk、Telegram 给我们留言。告诉我们租车日期和取车地点。我们能用越南语、英语、韩语、中文和日语回复。',
+    ja:'ホットラインにお電話、またはMessenger・Zalo・WhatsApp・KakaoTalk・Telegramでご連絡ください。ご希望の日程と受け取り場所をお知らせください。ベトナム語・英語・韓国語・中国語・日本語で対応します。'
   },
   'pstep.2.t': { vi:'Xác Nhận Giấy Tờ', en:'Confirm Your Details', ko:'서류 확인', zh:'确认证件', ja:'書類の確認' },
   'pstep.2.d': {
